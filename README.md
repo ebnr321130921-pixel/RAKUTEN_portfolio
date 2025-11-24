@@ -1,0 +1,2 @@
+# RAKUTEN_portfolio
+RAKUTEN_portfolio_JST22:00UPDATE
