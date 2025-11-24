@@ -1,0 +1,5 @@
+fund_id,product,provider,url,status,note
+QQQ,NASDAQ100,Rakuten,https://www.rakuten-sec.co.jp/web/fund/detail/?ID=JP90C000Q2U6,active,"ナスダック100 現物"
+VTI,VTI,Rakuten,https://www.rakuten-sec.co.jp/web/fund/detail/?ID=JP90C000QF22,active,"VTI 現物"
+SPX500,SP500,Rakuten,https://www.rakuten-sec.co.jp/web/fund/detail/?ID=JP90C000FHD2,active,"S&P500"
+QQQ_L,NASDAQ100_L,Rakuten,https://www.rakuten-sec.co.jp/web/fund/detail/?ID=JP90C000MLM1,active,"ナスダック100 レバ"
