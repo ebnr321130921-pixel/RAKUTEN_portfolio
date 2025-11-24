@@ -2,7 +2,7 @@ name: Daily Portfolio Update
 
 on:
   schedule:
-    - cron: "0 14 * * MON-FRI"  # JST23:00 (＝UTC14:00)
+    - cron: "0 14 * * MON-FRI"  # JST 23:00
   workflow_dispatch:
 
 jobs:
@@ -16,19 +16,25 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
       - name: Install dependencies
         run: |
-          pip install pandas matplotlib requests beautifulsoup4 lxml
+          pip install pandas requests beautifulsoup4 lxml matplotlib
 
       - name: Run daily fetch
         run: python3 daily_fetch.py
 
-      - name: Commit & push (daily_returns.csv のみ)
+      - name: Show output files
+        run: ls -al
+
+      - name: Commit & push daily_returns.csv
         run: |
+          git config --local user.name "github-actions"
           git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Action"
-          git add daily_returns.csv
+          
+          # 追加：変化があるときだけ commit
+          git add daily_returns.csv || true
+          
           git commit -m "Daily auto update" || echo "No changes"
-          git push
+          git push || echo "No push"
