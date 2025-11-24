@@ -2,7 +2,7 @@ name: Daily Portfolio Update
 
 on:
   schedule:
-    - cron: "0 13 * * *"  # 22:00 JST daily
+    - cron: "0 14 * * MON-FRI"   # JST 23:00（=UTC14:00）
   workflow_dispatch:
 
 jobs:
@@ -20,7 +20,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install pandas matplotlib requests
+        pip install pandas matplotlib requests beautifulsoup4 lxml
 
     - name: Run daily fetch
       run: python daily_fetch.py
@@ -29,6 +29,6 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add portfolio_A.html
+        git add portfolio_A.html daily_returns.csv
         git commit -m "Daily auto update"
         git push
